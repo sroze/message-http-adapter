@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+
+        <service id="message_http_adapter.controller.consume_message" class="Sam\Symfony\Message\HttpAdapter\ConsumingMessages\ConsumeMessageController" public="true">
+            <argument type="service" id="message_bus" />
+            <argument type="service" id="message.transport.default_decoder" />
+            <argument type="service" id="message.transport.default_encoder" />
+        </service>
+
+        <service id="message_http_adapter.consumer_routing_loader" class="Sam\Symfony\Message\HttpAdapter\ConsumingMessages\ConsumerRoutingLoader">
+            <argument type="collection" /> <!-- Consumer definitions -->
+
+            <tag name="routing.loader" />
+        </service>
+    </services>
+</container>
