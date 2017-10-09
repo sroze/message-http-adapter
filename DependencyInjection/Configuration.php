@@ -25,6 +25,13 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->arrayNode('producers')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('endpoint')->isRequired()->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

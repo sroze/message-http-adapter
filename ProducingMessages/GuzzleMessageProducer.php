@@ -24,8 +24,10 @@ class GuzzleMessageProducer implements MessageProducerInterface
      */
     public function produce($message)
     {
+        $encoded = $this->encoder->encode($message);
+
         return $this->client->request('post', $this->endpoint, [
-            $this->encoder->encode($message),
+            'body' => $encoded['body'],
         ]);
     }
 }
