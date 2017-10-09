@@ -55,5 +55,5 @@ message_http_adapter:
 framework:
     message:
         routing:
-            'App\Message\Send3rdPartyNotification': message_http_adapter.requestbin
+            'App\Message\Send3rdPartyNotification': message_http_adapter.producer.requestbin
 ```
